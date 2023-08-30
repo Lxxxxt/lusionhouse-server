@@ -1,4 +1,4 @@
-package controller
+package user
 
 import (
 	"log"
@@ -11,15 +11,15 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
-type loginController struct {
+type LoginController struct {
 	userService *user.UserServiceIml
 }
 
-func NewUserController(userService *user.UserServiceIml) *loginController {
-	return &loginController{userService: userService}
+func NewUserController(userService *user.UserServiceIml) *LoginController {
+	return &LoginController{userService: userService}
 }
 
-func (l *loginController) LoginHandler(c *gin.Context) {
+func (l *LoginController) LoginHandler(c *gin.Context) {
 	var requestData struct {
 		Username string `json:"username" binding:"required"`
 		Password string `json:"password" binding:"required"`
@@ -55,7 +55,7 @@ func (l *loginController) LoginHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, responseData)
 }
 
-func (c *loginController) LogoutHandler(g *gin.Context) {
+func (c *LoginController) LogoutHandler(g *gin.Context) {
 	sessionId, ok := g.Get("session_id")
 	if !ok {
 		log.Printf("get user sessionId from context failed\n")
@@ -71,7 +71,7 @@ func (c *loginController) LogoutHandler(g *gin.Context) {
 	}
 
 }
-func (l *loginController) RegisterHandler(g *gin.Context) {
+func (l *LoginController) RegisterHandler(g *gin.Context) {
 	var requestData struct {
 		Username    string `json:"username" binding:"required"`
 		Password    string `json:"password" binding:"required"`
