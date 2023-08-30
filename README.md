@@ -1,2 +1,2 @@
 # lusionhouse-server
-code with ddd
+a demo app of http server build with ddd concept
