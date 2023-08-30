@@ -14,7 +14,6 @@ var (
 )
 
 func Startup() (err error) {
-	// dsn := "root:qusiba456@tcp(62.234.33.80:30000)/lusion_house"
 	dsn := "root:qusiba456@tcp(mysql-service:3306)/lusion_house"
 	MysqlCli, err = initDb(dsn)
 	return
