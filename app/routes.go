@@ -15,5 +15,7 @@ func RegisterHandlers(r *gin.Engine) {
 	})
 	g := r.Group("/api/v1")
 	controller.RegisterUserHandler(g)
+	ws := r.Group("/ws")
+	controller.RegisterWsHandler(ws)
 
 }
